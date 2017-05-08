@@ -1,4 +1,4 @@
-package com.ladislav;
+package com.ladislav.model;
 
 /**
  * Created by Ladislav on 5/6/2017.

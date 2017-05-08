@@ -45,7 +45,7 @@ public class ChatServer {
                         socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 
-                //Handles login
+                // TODO refactor, maybie separate method - login
                 while (true) {
 
                     // sends login request to client and takes response
@@ -55,7 +55,6 @@ public class ChatServer {
                     if (protocol != LOGIN_REQUEST) { // maybie some other way instead of returning
                         return;
                     }
-
 
                     name = in.readLine();
 
@@ -69,47 +68,61 @@ public class ChatServer {
                         clients.put(name, out);
                         out.println(LOGIN_SUCCESS);
                         sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
+                        System.out.println(name + "logged in");
                         break;
                     }
                 }
 
-                out.println(clients.size());
+                // TODO send online client list - separate method ?
+                System.out.println("Sending " + clients.size() + " online clients to " + name);
+                out.println(clients.size() - 1);
+
                 for (String client : clients.keySet()) {
-                    out.println(client);
+                    if (!client.equals(name)) {
+                        out.println(client);
+                    }
                 }
 
-                System.out.println(name + " : " + ANNOUNCE_LOGIN); // use Logger ?
-
-                // Provide method to kick user later ?!
+                // TODO  refactoring, separate method - listen !?
                 while (!logoutRequested) {
 
                     int protocol = Integer.parseInt(in.readLine());
-                    String from = in.readLine();
-                    String receiver = in.readLine();
-                    String message = in.readLine();
+                    String from;
+                    String receiver;
+                    String message;
 
                     switch (protocol) {
                         case PRIVATE_MESSAGE:
+                            from = in.readLine();
+                            receiver = in.readLine();
+                            message = in.readLine();
                             boolean msgSent = sendMessage(receiver, protocol, from, message);
                             if (!msgSent) {
                                 sendMessage(from, SEND_FAILED, receiver, SEND_MESSAGE_FAILED);
                             }
                             break;
                         case BROADCAST_MESSAGE:
+                            from = in.readLine();
+                            message = in.readLine();
                             sendMessage(protocol, from, message);
                             break;
                         case LOGOUT_REQUEST:
+                            from = in.readLine();
                             sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
                             logoutRequested = true;
+                            break;
+                        case ANNOUNCE_LOGIN:
+                            from = in.readLine();
+                            sendMessage(ANNOUNCE_LOGIN, from, LOGIN_MESSAGE);
                             break;
                     }
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally {
+            } finally { // TODO extract logout method ?
                 if (name != null) {
-                    clients.remove(name); // extract logout method ?
+                    clients.remove(name);
                 }
                 try {
                     System.out.println(name + " : " + LOGOUT_MESSAGE); // use Logger instead ?
@@ -137,6 +150,8 @@ public class ChatServer {
             return false;
         }
 
+        System.out.println("sending message to " + receiver);
+
         out.println(protocol);
         out.println(from);
         out.println(message);
@@ -153,7 +168,9 @@ public class ChatServer {
 
     private void sendMessage(int protocol, String from, String message) {
         for (String receiver : clients.keySet()) {
-            sendMessage(receiver, protocol, from, message);
+            if (!receiver.equals(from)) {
+                sendMessage(receiver, protocol, from, message);
+            }
         }
     }
 
