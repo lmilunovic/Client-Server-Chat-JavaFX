@@ -7,42 +7,30 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.BlockingQueue;
 
 // TODO IDEAS:
 // Provide some options menu to set server's IP address and port manually
 
-public class ChatClient {
+public class ChatClient implements Notifier {
 
     private BufferedReader in;
     private PrintWriter out;
-    private Receiver receiver;
 
     private String name;
     // String password;
 
     private volatile boolean logoutRequested;
 
-    BlockingQueue<Message> messageBox;
+    // make thread safe
+    private Set<MessageObserver> observers = new HashSet<>();
 
-    // TODO BlockingQueue / Set ! ! !
-    private Set<String> onlineClients = new HashSet<>();
-
-
-    public ChatClient(String name, BlockingQueue<Message> messageBox) {
+    public ChatClient(String name) {
         this.name = name;
-        this.messageBox = messageBox;
     }
 
     public void start() {
-        receiver = new Receiver();
+        Receiver receiver = new Receiver();
         receiver.start();
-    }
-
-    //TODO implement me
-    public void getOnlineMembers(){
-        // get new members if online
-        // make some producer/consumer thing here?
     }
 
     //TODO implement me
@@ -60,17 +48,11 @@ public class ChatClient {
     public void sendBroadcastMessage(String message) {
 
     }
+
     public void requestLogout() {
-        // can I stop/interrupt thread from in here instead of boolean ?
+        // can I stop/interrupt thread from in here instead of boolean
+        // and send logout request to server ?
         logoutRequested = true;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     private class Receiver extends Thread {
@@ -79,103 +61,92 @@ public class ChatClient {
         public void run() {
 
             try {
+
                 Socket clientSocket = new Socket(ClientProtocols.SERVER_IP, ClientProtocols.PORT);
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 login();
+                getOnlineMembers();
 
-                System.out.println(name + "! You logged in succesfully.");
-                System.out.println(name + "! Server is adding online clients you can chat with:");
-
-                // gets online clients one by one
-                int onlineNum = Integer.parseInt(in.readLine());
-                for (int i = 0; i < onlineNum; i++) {
-                    String client = in.readLine().trim();
-                    System.out.println(client);
-                    onlineClients.add(client);
-                }
-
-                // listens for messages from server // TODO extract method / finish me
-                System.out.println(name + "! Server is listening for the messages you may receive.");
                 while (!logoutRequested) {
-
-                    // if Private, Broadcast or Message Failed:
-                    try {
-                        messageBox.put(receiveMessage());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    receiveMessage();
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                // close/destroy everything on logout
             }
         }
 
-        private Message receiveMessage() throws IOException {
+        private void receiveMessage() throws IOException {
             int protocol = Integer.parseInt(in.readLine());
-            String receiver = in.readLine();
+            String sender = in.readLine();
             String message = in.readLine();
-
-            return new Message(protocol,receiver,message);
+            notifyObservers(new Message(protocol, sender, message));
         }
 
         //boolean ?
         private void login() throws IOException {
-            while (true) {
 
-                //gets request to login from server
+            while (true) {
+                                                                    //gets request to login from server
                 int protocol = Integer.parseInt(in.readLine());
                 if (protocol != ClientProtocols.LOGIN_REQUEST) {
                     return;
                 }
-
-                // sends login request and user name
+                                                                    // sends back login request and user name
                 out.println(ClientProtocols.LOGIN_REQUEST);
                 out.println(name);
-
-                // server responds if login was successful
+                                                                    // server responds if login was successful
                 protocol = Integer.parseInt(in.readLine());
-
                 if (protocol == ClientProtocols.LOGIN_SUCCESS) {
+                    // TODO notify observers
+                    System.out.println(name +
+                            "! You logged in succesfully.");
                     break;
                 }
             }
+        }
 
+        private void getOnlineMembers() throws IOException {
+            //add protocol out to server !!!
+            int onlineNum = Integer.parseInt(in.readLine());
+            for (int i = 0; i < onlineNum; i++) {
+                receiveMessage();
+            }
+        }
+    }
+
+    @Override
+    public void addMessageObserver(MessageObserver o) {
+        if (o == null) {
+            throw new NullPointerException();
+        }
+
+        observers.add(o);
+    }
+
+    @Override
+    public void removeMessageObserver(MessageObserver o) {
+        if (o == null) {
+            throw new NullPointerException();
+        }
+
+        observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers(Message m) {
+        if (m == null) {
+            throw new NullPointerException();
+        }
+
+        for (MessageObserver observer : observers) {
+            observer.newMessageReceived(m);
         }
     }
 
 }
 
-
-
-
-//
-//                    switch (protocol) {
-//                        case ClientProtocols.PRIVATE_MESSAGE:
-//                            String sender = in.readLine();
-//                            String msg = in.readLine();
-//                            System.out.println(name + "! you received a private message from:" + sender);
-//                            System.out.println("Message: " + msg);
-//                            break;
-//                        case ClientProtocols.BROADCAST_MESSAGE:
-//                            // get client name
-//                            // get broadcast msg
-//                            break;
-//                        case ClientProtocols.SEND_FAILED:
-//                            // get client name
-//                            // get message
-//                            break;
-//                        case ClientProtocols.ANNOUNCE_LOGIN:
-//                            sender = in.readLine();
-//                            msg = in.readLine();
-//                            onlineClients.add(sender);
-//                            System.out.println(name + "! "+ sender +" announced to you that he is online");
-//                            break;
-//                        case ClientProtocols.ANNOUNCE_LOGOUT:
-//                            // get client name
-//                            // get message
-//                            // remove from online set
-//                            break;
-//                    }

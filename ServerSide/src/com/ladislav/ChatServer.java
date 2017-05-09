@@ -45,91 +45,103 @@ public class ChatServer {
                         socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
 
-                // TODO refactor, maybie separate method - login
-                while (true) {
-
-                    // sends login request to client and takes response
-                    out.println(LOGIN_REQUEST);
-                    int protocol = Integer.parseInt(in.readLine());
-
-                    if (protocol != LOGIN_REQUEST) { // maybie some other way instead of returning
-                        return;
-                    }
-
-                    name = in.readLine();
-
-                    if (name == null) {
-                        out.println(LOGIN_FAILED);
-                        out.println("Login was unsuccessful, name passed is null."); // extract to some constant
-                        return;
-                    }
-                    // checks if client with that name already logged
-                    if (!clients.containsKey(name)) {
-                        clients.put(name, out);
-                        out.println(LOGIN_SUCCESS);
-                        sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
-                        System.out.println(name + "logged in");
-                        break;
-                    }
-                }
-
-                // TODO send online client list - separate method ?
-                System.out.println("Sending " + clients.size() + " online clients to " + name);
-                out.println(clients.size() - 1);
-
-                for (String client : clients.keySet()) {
-                    if (!client.equals(name)) {
-                        out.println(client);
-                    }
-                }
-
-                // TODO  refactoring, separate method - listen !?
-                while (!logoutRequested) {
-
-                    int protocol = Integer.parseInt(in.readLine());
-                    String from;
-                    String receiver;
-                    String message;
-
-                    switch (protocol) {
-                        case PRIVATE_MESSAGE:
-                            from = in.readLine();
-                            receiver = in.readLine();
-                            message = in.readLine();
-                            boolean msgSent = sendMessage(receiver, protocol, from, message);
-                            if (!msgSent) {
-                                sendMessage(from, SEND_FAILED, receiver, SEND_MESSAGE_FAILED);
-                            }
-                            break;
-                        case BROADCAST_MESSAGE:
-                            from = in.readLine();
-                            message = in.readLine();
-                            sendMessage(protocol, from, message);
-                            break;
-                        case LOGOUT_REQUEST:
-                            from = in.readLine();
-                            sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
-                            logoutRequested = true;
-                            break;
-                        case ANNOUNCE_LOGIN:
-                            from = in.readLine();
-                            sendMessage(ANNOUNCE_LOGIN, from, LOGIN_MESSAGE);
-                            break;
-                    }
-                }
+                handleLogin();
+                sendOnlineClients();
+                listenAndServe();
 
             } catch (IOException e) {
                 e.printStackTrace();
-            } finally { // TODO extract logout method ?
-                if (name != null) {
-                    clients.remove(name);
+            } finally {
+                closeConnection();
+
+            }
+        }
+
+        private void handleLogin() throws IOException {
+            while (true) {
+
+                                                                    // sends login request to client and takes response
+                out.println(LOGIN_REQUEST);
+                int protocol = Integer.parseInt(in.readLine());
+
+                if (protocol != LOGIN_REQUEST) { // think of some other way to return?
+                    return;
                 }
-                try {
-                    System.out.println(name + " : " + LOGOUT_MESSAGE); // use Logger instead ?
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                name = in.readLine();
+
+                if (name == null) {
+                    out.println(LOGIN_FAILED);
+                    // extract to some constant
+                    out.println("Login was unsuccessful, name passed is null.");
+                    return;
                 }
+                                                                     // checks if client not online, log in
+                if (!clients.containsKey(name)) {
+                    clients.put(name, out);
+                    out.println(LOGIN_SUCCESS);
+                    sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
+                    System.out.println(name + "logged in");
+                    break;
+                }
+            }
+        }
+        private void sendOnlineClients() {
+
+            System.out.println("Sending " + clients.size() +
+                    " online clients to " + name);
+            out.println(clients.size() - 1);
+
+            for (String client : clients.keySet()) {
+                if (!client.equals(name)) {
+                    sendMessage(name, ANNOUNCE_LOGIN, client, LOGIN_MESSAGE);
+                }
+            }
+
+        }
+        private void listenAndServe() throws IOException {
+
+            while (!logoutRequested) {
+                int protocol = Integer.parseInt(in.readLine());
+                String from;
+                String receiver;
+                String message;
+
+                switch (protocol) {
+                    case PRIVATE_MESSAGE:
+                        from = in.readLine();
+                        receiver = in.readLine();
+                        message = in.readLine();
+                        boolean msgSent = sendMessage(receiver, protocol, from, message);
+                        if (!msgSent) {
+                            sendMessage(from, SEND_FAILED, receiver, SEND_MESSAGE_FAILED);
+                        }
+                        break;
+                    case BROADCAST_MESSAGE:
+                        from = in.readLine();
+                        message = in.readLine();
+                        sendMessage(protocol, from, message);
+                        break;
+                    case LOGOUT_REQUEST:
+                        from = in.readLine();
+                        sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
+                        logoutRequested = true;
+                        break;
+                    case ANNOUNCE_LOGIN:
+                        from = in.readLine();
+                        sendMessage(ANNOUNCE_LOGIN, from, LOGIN_MESSAGE);
+                        break;
+                }
+            }
+        }
+        private void closeConnection() {
+            if (name != null) {
+                clients.remove(name);
+            }
+            try {
+                System.out.println(name + " : " + LOGOUT_MESSAGE); // use Logger instead ?
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

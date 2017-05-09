@@ -5,15 +5,14 @@ package com.ladislav.model;
  */
 public class Message {
 
-    int protocol;
-    //String sender;
-    String receiver;
-    String messageBody;
+    private int protocol;
+    private String sender;
+    private String messageBody;
 
     public Message(int protocol, String receiver, String messageBody) {
         this.protocol = protocol;
       //  this.sender = sender;
-        this.receiver = receiver;
+        this.sender = receiver;
         this.messageBody = messageBody;
     }
 
@@ -21,8 +20,8 @@ public class Message {
         return protocol;
     }
 
-    public String getReceiver() {
-        return receiver;
+    public String getSender() {
+        return sender;
     }
 
     public String getMessageBody() {

@@ -3,6 +3,7 @@ package com.ladislav;
 import com.ladislav.model.ChatClient;
 import com.ladislav.model.Message;
 
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 /**
@@ -12,6 +13,7 @@ public class Controller {
 
     //TODO View view;
     BlockingQueue<Message> messageBox;
+    Set<String> onlineUsers;
     ChatClient client;
 
 

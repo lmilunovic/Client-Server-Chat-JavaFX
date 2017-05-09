@@ -13,6 +13,8 @@ public class ClientProtocols {
     static final int LOGOUT_REQUEST = 9000;
     static final int ANNOUNCE_LOGOUT = 9001;
 
+    static final int REQUEST_ONLINE_MEMBERS = 1002;
+
     static final int LOGIN_SUCCESS = 1000;
     static final int LOGIN_FAILED = -1000;
 
