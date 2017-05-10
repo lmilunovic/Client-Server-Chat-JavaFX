@@ -59,7 +59,6 @@ public class ChatServer {
 
         private void handleLogin() throws IOException {
             while (true) {
-
                                                                     // sends login request to client and takes response
                 out.println(LOGIN_REQUEST);
                 int protocol = Integer.parseInt(in.readLine());
@@ -67,7 +66,7 @@ public class ChatServer {
                 if (protocol != LOGIN_REQUEST) { // think of some other way to return?
                     return;
                 }
-                name = in.readLine();
+                name = in.readLine().trim();
 
                 if (name == null) {
                     // TODO refactor - sends message but doesn't use sendMessage
@@ -77,7 +76,8 @@ public class ChatServer {
                     // extract to some constant
                     return;
                 }
-                                                                     // checks if client not online, log in
+
+                // checks if client not online, log in
                 if (!clients.containsKey(name)) {
                     clients.put(name, out);
                     sendMessage(name, LOGIN_SUCCESS, SERVER, "Welcome to Chat Server !");

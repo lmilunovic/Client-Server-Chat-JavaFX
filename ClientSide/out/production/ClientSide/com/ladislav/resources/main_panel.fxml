@@ -28,13 +28,11 @@
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Logout" />
+              </items>
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -48,9 +46,9 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="72.0" text="Message:" />
-            <TextField prefHeight="25.0" prefWidth="324.0" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="send" />
+            <Label  prefHeight="17.0" prefWidth="72.0" text="Message:" alignment="CENTER" />
+            <TextField fx:id="sendMessage" prefHeight="25.0" prefWidth="324.0" />
+            <Button  mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="send" />
          </children>
       </HBox>
    </bottom>

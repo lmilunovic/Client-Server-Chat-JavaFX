@@ -10,8 +10,15 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.ladislav.ClientProtocols.BROADCAST_MESSAGE;
+import static com.ladislav.ClientProtocols.PRIVATE_MESSAGE;
+
 // TODO IDEAS:
 // Provide some options menu to set server's IP address and port manually
+// Add session class to keep online members and messages from them
+// Maybe keep session in file?
+// Hold ObservableList of sessions instead of Notifier thing ?
+
 
 public class ChatClient implements Notifier {
 
@@ -27,14 +34,6 @@ public class ChatClient implements Notifier {
     // make thread safe
     private Set<MessageObserver> observers = new HashSet<>();
 
-    public ChatClient(String name) {
-        this.name = name;
-    }
-
-    public ChatClient(){
-
-    }
-
     public void start(String name, String password) {
         this.name = name;
         this.password = password;
@@ -42,12 +41,11 @@ public class ChatClient implements Notifier {
         receiver.start();
     }
 
-    //TODO implement me
     public void sendPrivateMessage(String to, String message) {
         if (out == null) {
             return; // maybie exception later on
         }
-        out.println(ClientProtocols.PRIVATE_MESSAGE);
+        out.println(PRIVATE_MESSAGE);
         out.println(name);
         out.println(to);
         out.println(message);
@@ -55,7 +53,12 @@ public class ChatClient implements Notifier {
 
     //TODO implement me
     public void sendBroadcastMessage(String message) {
-
+        if (out == null) {
+            return; // maybie exception later on
+        }
+        out.println(BROADCAST_MESSAGE);
+        out.println(name);
+        out.println(message);
     }
 
     public void requestLogout() {
@@ -98,7 +101,6 @@ public class ChatClient implements Notifier {
             notifyObservers(new Message(protocol, sender, message));
         }
 
-        //boolean ?
         private boolean login() throws IOException {
 
             while (true) {

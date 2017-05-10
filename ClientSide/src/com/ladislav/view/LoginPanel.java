@@ -5,7 +5,6 @@ package com.ladislav.view;
  */
 
 import com.ladislav.controllers.LoginController;
-import com.ladislav.controllers.MainController;
 import com.ladislav.model.ChatClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +23,7 @@ public class LoginPanel extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_panel.fxml"));
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
         Parent root = loginLoader.load();
         LoginController loginController = loginLoader.getController();
 

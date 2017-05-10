@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<GridPane fx:controller="com.ladislav.controllers.LoginController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.76-ea" fx:controller="com.ladislav.controllers.LoginController">
     <padding>
-        <Insets top="25" right="25" bottom="10" left="25"/>
+        <Insets bottom="10" left="25" right="25" top="25" />
     </padding>
 
-    <Text text="Enter your username and password to login into the chat server:"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <Text text="Enter your username and password to login into the chat server:" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-    <Label text="User Name:"
-           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-    <TextField fx:id="usernameField"
-            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-    <Label text="Password:"
-           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
 
-    <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Login"
-                onMouseClicked="#handleLoginClick"/>
+    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleLoginAction" />
+
+    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button onAction="#handleLoginAction"  prefHeight="15.0" prefWidth="85.0" text="Login"/>
     </HBox>
 
-    <Text fx:id="actiontarget"
-          GridPane.columnIndex="0" GridPane.columnSpan="2"
-          GridPane.halignment="RIGHT" GridPane.rowIndex="6"
-    />
-    <Text fx:id="failMessage"
-          text=""
-          GridPane.columnIndex="0" GridPane.columnSpan="2"
-          GridPane.rowIndex="7"/>
+    <Text fx:id="actiontarget"   GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+    <Text fx:id="failMessage" text="Test" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+
 </GridPane>
