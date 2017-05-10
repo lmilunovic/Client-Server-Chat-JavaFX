@@ -1,5 +1,7 @@
 package com.ladislav.model;
 
+import com.ladislav.ClientProtocols;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,11 +15,12 @@ import java.util.Set;
 
 public class ChatClient implements Notifier {
 
+
     private BufferedReader in;
     private PrintWriter out;
 
     private String name;
-    // String password;
+    private String password;
 
     private volatile boolean logoutRequested;
 
@@ -28,7 +31,13 @@ public class ChatClient implements Notifier {
         this.name = name;
     }
 
-    public void start() {
+    public ChatClient(){
+
+    }
+
+    public void start(String name, String password) {
+        this.name = name;
+        this.password = password;
         Receiver receiver = new Receiver();
         receiver.start();
     }
@@ -66,11 +75,13 @@ public class ChatClient implements Notifier {
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-                login();
-                getOnlineMembers();
+                boolean success = login();
 
-                while (!logoutRequested) {
-                    receiveMessage();
+                if (success) {
+                    getOnlineMembers();
+                    while (!logoutRequested) {
+                        receiveMessage();
+                    }
                 }
 
             } catch (IOException e) {
@@ -88,13 +99,13 @@ public class ChatClient implements Notifier {
         }
 
         //boolean ?
-        private void login() throws IOException {
+        private boolean login() throws IOException {
 
             while (true) {
                                                                     //gets request to login from server
                 int protocol = Integer.parseInt(in.readLine());
                 if (protocol != ClientProtocols.LOGIN_REQUEST) {
-                    return;
+                    return false;
                 }
                                                                     // sends back login request and user name
                 out.println(ClientProtocols.LOGIN_REQUEST);
@@ -102,10 +113,13 @@ public class ChatClient implements Notifier {
                                                                     // server responds if login was successful
                 protocol = Integer.parseInt(in.readLine());
                 if (protocol == ClientProtocols.LOGIN_SUCCESS) {
-                    // TODO notify observers
-                    System.out.println(name +
-                            "! You logged in succesfully.");
-                    break;
+                    String from = in.readLine();
+                    String message= in.readLine();
+                    notifyObservers(new Message(protocol, from , message));
+                    return true;
+                } else {
+                    notifyObservers(new Message(protocol, "SERVER", "Invalid name/password, try again"));
+                    return false;
                 }
             }
         }
@@ -138,13 +152,12 @@ public class ChatClient implements Notifier {
     }
 
     @Override
-    public void notifyObservers(Message m) {
+    public void notifyObservers(Message m){
         if (m == null) {
             throw new NullPointerException();
         }
-
         for (MessageObserver observer : observers) {
-            observer.newMessageReceived(m);
+                observer.newMessageReceived(m);
         }
     }
 

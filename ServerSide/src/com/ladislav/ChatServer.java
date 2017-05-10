@@ -70,24 +70,27 @@ public class ChatServer {
                 name = in.readLine();
 
                 if (name == null) {
+                    // TODO refactor - sends message but doesn't use sendMessage
                     out.println(LOGIN_FAILED);
+                    out.println(SERVER);
+                    out.println("invalid name");
                     // extract to some constant
-                    out.println("Login was unsuccessful, name passed is null.");
                     return;
                 }
                                                                      // checks if client not online, log in
                 if (!clients.containsKey(name)) {
                     clients.put(name, out);
-                    out.println(LOGIN_SUCCESS);
+                    sendMessage(name, LOGIN_SUCCESS, SERVER, "Welcome to Chat Server !");
                     sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
                     System.out.println(name + "logged in");
                     break;
                 }
             }
         }
+
         private void sendOnlineClients() {
 
-            System.out.println("Sending " + clients.size() +
+            System.out.println("Sending " + (clients.size() - 1) +
                     " online clients to " + name);
             out.println(clients.size() - 1);
 
@@ -96,7 +99,6 @@ public class ChatServer {
                     sendMessage(name, ANNOUNCE_LOGIN, client, LOGIN_MESSAGE);
                 }
             }
-
         }
         private void listenAndServe() throws IOException {
 

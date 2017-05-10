@@ -9,12 +9,12 @@ public class ChatAppProtocols {
     static final int PORT = 12000;
 
     static final int LOGIN_REQUEST = 1000;
-    static final int ANNOUNCE_LOGIN = 1001;
+    static final int LOGIN_SUCCESS = 1001;
+    static final int ANNOUNCE_LOGIN = 1002;
     static final int LOGOUT_REQUEST = 9000;
     static final int ANNOUNCE_LOGOUT = 9001;
-    static final int REQUEST_ONLINE_MEMBERS = 1002;
 
-    static final int LOGIN_SUCCESS = 1000;
+    static final int REQUEST_ONLINE_MEMBERS = 1002;
     static final int LOGIN_FAILED = -1000;
 
     static final int PRIVATE_MESSAGE = 5000;

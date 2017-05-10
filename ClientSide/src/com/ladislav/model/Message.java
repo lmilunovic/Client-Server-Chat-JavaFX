@@ -11,7 +11,6 @@ public class Message {
 
     public Message(int protocol, String receiver, String messageBody) {
         this.protocol = protocol;
-      //  this.sender = sender;
         this.sender = receiver;
         this.messageBody = messageBody;
     }
@@ -26,5 +25,10 @@ public class Message {
 
     public String getMessageBody() {
         return messageBody;
+    }
+
+    @Override
+    public String toString() {
+        return protocol + " " + sender + " " + messageBody;
     }
 }
