@@ -11,6 +11,7 @@ public class Main {
 
         ChatServer server = new ChatServer();
         server.start(PORT);
+        //thread
 
     }
 }

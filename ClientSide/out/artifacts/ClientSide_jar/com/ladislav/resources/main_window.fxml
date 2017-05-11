@@ -12,18 +12,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ladislav.controllers.MainController">
-   <right>
-       <VBox>
-           <Label>Online:</Label>
-           <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-       </VBox>
-   </right>
-    <center>
-        <TextArea text="Welcome To chat Server">
-            Welcome To chat Server
-        </TextArea>
-    </center>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ladislav.controllers.MainController">
+
+
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -43,12 +35,23 @@
         </menus>
       </MenuBar>
    </top>
+    <center>
+        <TextArea fx:id="msgSession" editable="false" text="Welcome To chat Server">
+            Welcome To chat Server
+        </TextArea>
+    </center>
+    <right>
+        <VBox>
+            <Label>Online:</Label>
+            <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        </VBox>
+    </right>
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label  prefHeight="17.0" prefWidth="72.0" text="Message:" alignment="CENTER" />
-            <TextField fx:id="sendMessage" prefHeight="25.0" prefWidth="324.0" />
-            <Button  mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="send" />
+            <Label prefHeight="17.0" prefWidth="72.0" text="Message:" alignment="CENTER" />
+            <TextField fx:id="messageTextField" onAction="#sendMessageAction" prefHeight="25.0" prefWidth="324.0" />
+            <Button fx:id="sendMessageBtn" onAction="#sendMessageAction" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="send" />
          </children>
       </HBox>
    </bottom>

@@ -17,17 +17,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.ladislav.ClientProtocols.LOGIN_FAILED;
-import static com.ladislav.ClientProtocols.LOGIN_SUCCESS;
-
 /**
  * Created by Ladislav on 5/8/2017.
  */
 public class LoginController implements MessageObserver{
 
     private ChatClient model;
-    private Stage stage;
 
+    @FXML
+    Stage stage;
     @FXML
     TextField usernameField;
     @FXML
@@ -37,41 +35,6 @@ public class LoginController implements MessageObserver{
 
     public void initModel(ChatClient model) {
         this.model = model;
-    }
-
-    @Override
-    public void newMessageReceived(Message msg){
-
-        if (msg.getProtocol() == LOGIN_SUCCESS) {
-            try {
-                loadMainWindow();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else if (msg.getProtocol() == LOGIN_FAILED) {
-            failMessage.setText("Login Failed !");
-        } else {
-            System.out.println(msg.toString());
-        }
-    }
-
-    private void loadMainWindow() throws IOException {
-
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../resources/main_window.fxml"));
-        Parent root = mainLoader.load();
-        MainController mainController = mainLoader.getController();
-
-        model.addMessageObserver(mainController);
-        mainController.initModel(model);
-        Scene scene = new Scene(root);
-
-        Platform.runLater(() -> {
-            stage.hide();
-            stage.setTitle("Chat Server");
-            stage.setScene(scene);
-            stage.show();
-        });
-
     }
 
     @FXML
@@ -84,4 +47,68 @@ public class LoginController implements MessageObserver{
         model.start(username, password);
 
     }
+    private void loadMainWindow() throws IOException {
+
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../resources/main_window.fxml"));
+        Parent root = mainLoader.load();
+        MainController mainController = mainLoader.getController();
+
+        model.addMessageObserver(mainController);
+        mainController.initialise(model);
+        Scene scene = new Scene(root);
+
+        Platform.runLater(() -> {
+            stage.hide();
+            stage.setTitle("Chat Server");
+            stage.setScene(scene);
+            stage.show();
+        });
+
+    }
+
+    @Override
+    public void loginSuccessMessage(Message msg) {
+        try {
+            loadMainWindow();
+            model.removeMessageObserver(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void loginFailedMessage(Message msg) {
+        failMessage.setText("Login Failed !");
+    }
+
+    @Override
+    public void newPrivateMessageReceived(Message msg) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void newBroadCastMessageReceived(Message msg) {
+        throw new UnsupportedOperationException();
+
+    }
+
+    @Override
+    public void sendMessageFailed(Message msg) {
+        throw new UnsupportedOperationException();
+
+    }
+
+    @Override
+    public void newLoginAnnouncement(Message msg) {
+        throw new UnsupportedOperationException();
+
+    }
+
+    @Override
+    public void newLogoutAnnouncement(Message msg) {
+        throw new UnsupportedOperationException();
+
+    }
+
+
 }

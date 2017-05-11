@@ -1,27 +1,34 @@
 package com.ladislav.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by Ladislav on 5/11/2017.
+ * Simple class that holds online client and messages received from and sent to him.
  */
 class Session {
 
-    final String clientName;
-    private String messages;
+    private final String clientName;
+    private final List<String> messages;
 
-    public Session(String clientName, String messages) {
+    public Session(String clientName) {
         this.clientName = clientName;
-        this.messages = messages;
+        this.messages = new ArrayList<>();
     }
 
     public String getClientName() {
         return clientName;
     }
 
-    public String getMessages() {
+    public List<String> getMessages() {
         return messages;
     }
 
-    public void updateMessages(String msg) {
-        messages += "\n" + msg;
+    public String getLastMessage() {
+        return messages.get(messages.size() - 1);
+    }
+
+    public void addMessage(String msg) {
+        messages.add(msg);
     }
 }
