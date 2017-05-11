@@ -48,8 +48,6 @@ public class ChatServer {
                 handleLogin();
                 sendOnlineClients();
                 listenAndServe();
-                System.out.println("Closing connection");
-                closeConnection();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -70,7 +68,6 @@ public class ChatServer {
                     return;
                 }
                 name = in.readLine().trim();
-
                 if (name == null) {
                     // TODO refactor - sends message but doesn't use sendMessage
                     out.println(LOGIN_FAILED);
@@ -85,7 +82,7 @@ public class ChatServer {
                     clients.put(name, out);
                     sendMessage(name, LOGIN_SUCCESS, SERVER, "Welcome to Chat Server !");
                     sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
-                    System.out.println(name + "logged in");
+                    System.out.println(name + "logged in to the server");
                     break;
                 }
             }
@@ -132,8 +129,8 @@ public class ChatServer {
                         break;
                     case LOGOUT_REQUEST:
                         from = in.readLine();
-                        out.println(LOGOUT_REQUEST);
                         sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
+                        out.println(LOGOUT_REQUEST);
                         return;
                 }
             }

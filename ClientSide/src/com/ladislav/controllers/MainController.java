@@ -6,6 +6,9 @@ import com.ladislav.model.MessageObserver;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -139,24 +142,24 @@ public class MainController implements MessageObserver {
     }
 
 
+    //FIXME
     public void handleLogout(ActionEvent actionEvent) throws IOException {
         model.requestLogout();
-        System.exit(0);
-//        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
-//        Parent root = mainLoader.load();
-//        LoginController loginController = mainLoader.getController();
-//
-//        model.addMessageObserver(loginController);
-//        model.removeMessageObserver(this);
-//        loginController.initialise(model);
-//        Scene scene = new Scene(root);
-//
-//        Platform.runLater(() -> {
-//            stage.hide();
-//            stage.setTitle("Login");
-//            stage.setScene(scene);
-//            stage.show();
-//        });
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
+        Parent root = loginLoader.load();
+        LoginController loginController = loginLoader.getController();
+
+        model.removeMessageObserver(this);
+        model.addMessageObserver(loginController);
+        loginController.initialise(model);
+        Scene scene = new Scene(root);
+
+        Platform.runLater(() -> {
+            stage.hide();
+            stage.setTitle("Login");
+            stage.setScene(scene);
+            stage.show();
+        });
 
     }
 }

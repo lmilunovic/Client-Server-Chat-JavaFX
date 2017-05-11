@@ -55,6 +55,7 @@ public class LoginController implements MessageObserver{
 
 
         model.addMessageObserver(mainController);
+        model.removeMessageObserver(this);
         mainController.initialise(model, stage);
         Scene scene = new Scene(root);
 
@@ -76,7 +77,7 @@ public class LoginController implements MessageObserver{
     public void loginSuccessMessage(Message msg) {
         try {
             loadMainWindow();
-            model.removeMessageObserver(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
