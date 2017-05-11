@@ -48,10 +48,13 @@ public class ChatServer {
                 handleLogin();
                 sendOnlineClients();
                 listenAndServe();
+                System.out.println("Closing connection");
+                closeConnection();
 
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
+                System.out.println("Closing connection");
                 closeConnection();
 
             }
@@ -102,7 +105,7 @@ public class ChatServer {
         }
         private void listenAndServe() throws IOException {
 
-            while (!logoutRequested) {
+            while (true) {
                 int protocol = Integer.parseInt(in.readLine());
                 String from;
                 String receiver;
@@ -123,15 +126,15 @@ public class ChatServer {
                         message = in.readLine();
                         sendMessage(protocol, from, message);
                         break;
-                    case LOGOUT_REQUEST:
-                        from = in.readLine();
-                        sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
-                        logoutRequested = true;
-                        break;
                     case ANNOUNCE_LOGIN:
                         from = in.readLine();
                         sendMessage(ANNOUNCE_LOGIN, from, LOGIN_MESSAGE);
                         break;
+                    case LOGOUT_REQUEST:
+                        from = in.readLine();
+                        out.println(LOGOUT_REQUEST);
+                        sendMessage(ANNOUNCE_LOGOUT, from, LOGOUT_MESSAGE);
+                        return;
                 }
             }
         }

@@ -17,7 +17,6 @@ import static com.ladislav.ClientProtocols.*;
 // Maybe keep session in file?
 // Hold ObservableList of sessions instead of Notifier thing ?
 
-
 public class ChatClient implements Notifier {
 
     private BufferedReader in;
@@ -25,10 +24,12 @@ public class ChatClient implements Notifier {
 
     private String name;
     private String password;
+    Receiver receiver;
 
-    private volatile boolean logoutRequested;
 
-    private Map<String, List<String>> session ;
+    private boolean logoutRequested;
+
+    private Map<String, List<String>> session;
 
     // make thread safe to be sure?
     private Set<MessageObserver> observers = new HashSet<>();
@@ -40,7 +41,7 @@ public class ChatClient implements Notifier {
     public void start(String name, String password) {
         this.name = name;
         this.password = password;
-        Receiver receiver = new Receiver();
+        receiver = new Receiver();
         receiver.start();
     }
 
@@ -67,10 +68,11 @@ public class ChatClient implements Notifier {
         out.println(message);
     }
 
-    public void requestLogout() {
+    public synchronized void requestLogout() {
         // can I stop/interrupt thread from in here instead of boolean
         // and send logout request to server ?
-        logoutRequested = true;
+        out.println(LOGOUT_REQUEST);
+        out.println(name);
     }
 
     public String getName() {
@@ -93,15 +95,17 @@ public class ChatClient implements Notifier {
 
                 if (success) {
                     getOnlineMembers();
-                    while (!logoutRequested) {
+                    while (true) {
+                        if (logoutRequested) {
+                            break;
+                        }
                         receiveMessage();
                     }
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                // close/destroy everything on logout
+                observers = new HashSet<>();
             }
         }
 
@@ -109,19 +113,19 @@ public class ChatClient implements Notifier {
         private boolean login() throws IOException {
 
             while (true) {
-                                                                    //gets request to login from server
+                //gets request to login from server
                 int protocol = Integer.parseInt(in.readLine());
                 if (protocol != ClientProtocols.LOGIN_REQUEST) {
                     return false;
                 }
-                                                                    // sends back login request and user name
+                // sends back login request and user name
                 out.println(ClientProtocols.LOGIN_REQUEST);
                 out.println(name);
-                                                                    // server responds if login was successful
+                // server responds if login was successful
                 protocol = Integer.parseInt(in.readLine());
                 if (protocol == ClientProtocols.LOGIN_SUCCESS) {
                     String from = in.readLine();
-                    String message= in.readLine();
+                    String message = in.readLine();
 
                     // initialising session
                     session = new HashMap<>();
@@ -129,18 +133,23 @@ public class ChatClient implements Notifier {
                     broadcastMessages.add(message);
                     session.put("BROADCAST", broadcastMessages);
 
-                    notifyObservers(new Message(protocol, from, name , message));
+                    notifyObservers(new Message(protocol, from, name, message));
                     return true;
                 } else {
-                    notifyObservers(new Message(protocol, "SERVER", name , "Invalid name/password, try again"));
+                    notifyObservers(new Message(protocol, "SERVER", name, "Invalid name/password, try again"));
                     return false;
                 }
             }
         }
 
-
         private void receiveMessage() throws IOException {
+
             int protocol = Integer.parseInt(in.readLine());
+
+            if (protocol == LOGOUT_REQUEST) {
+                logoutRequested = true;
+                return;
+            }
             String sender = in.readLine();
             String message = in.readLine();
 
@@ -149,6 +158,7 @@ public class ChatClient implements Notifier {
             System.out.println("Sender: " + sender + "Receiver: " + receiver);
 
             notifyObservers(new Message(protocol, sender, receiver, message));
+
         }
 
         private void getOnlineMembers() throws IOException {
@@ -179,7 +189,7 @@ public class ChatClient implements Notifier {
     }
 
     @Override
-    public void notifyObservers(Message m){
+    public void notifyObservers(Message m) {
         if (m == null) {
             System.out.println("message is null !");
             throw new NullPointerException();
@@ -187,11 +197,11 @@ public class ChatClient implements Notifier {
         for (MessageObserver observer : observers) {
             switch (m.getProtocol()) {
                 case PRIVATE_MESSAGE:
-                    session.get(m.getSender()).add(m.getMessageBody());
+                    session.get(m.getSender()).add(m.getSender() + " : " + m.getMessageBody());
                     observer.newPrivateMessageReceived(m);
                     break;
                 case BROADCAST_MESSAGE:
-                    session.get("BROADCAST").add(m.getMessageBody());
+                    session.get("BROADCAST").add(m.getSender() + " : " + m.getMessageBody());
                     observer.newBroadCastMessageReceived(m);
                     break;
                 case ANNOUNCE_LOGIN:

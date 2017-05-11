@@ -33,7 +33,7 @@ public class LoginController implements MessageObserver{
     @FXML
     Text failMessage;
 
-    public void initModel(ChatClient model) {
+    public void initialise(ChatClient model) {
         this.model = model;
     }
 
@@ -53,11 +53,17 @@ public class LoginController implements MessageObserver{
         Parent root = mainLoader.load();
         MainController mainController = mainLoader.getController();
 
+
         model.addMessageObserver(mainController);
-        mainController.initialise(model);
+        mainController.initialise(model, stage);
         Scene scene = new Scene(root);
 
         Platform.runLater(() -> {
+
+            stage.setOnCloseRequest(t -> {
+                model.requestLogout();
+                System.exit(0);
+            });
             stage.hide();
             stage.setTitle("Chat Server");
             stage.setScene(scene);
@@ -109,6 +115,5 @@ public class LoginController implements MessageObserver{
         throw new UnsupportedOperationException();
 
     }
-
 
 }

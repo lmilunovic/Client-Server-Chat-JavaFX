@@ -7,10 +7,12 @@ package com.ladislav.view;
 import com.ladislav.controllers.LoginController;
 import com.ladislav.model.ChatClient;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -28,12 +30,13 @@ public class LoginPanel extends Application {
         LoginController loginController = loginLoader.getController();
 
         ChatClient model = new ChatClient();
+        loginController.initialise(model);
         model.addMessageObserver(loginController);
-        loginController.initModel(model);
 
         Scene scene = new Scene(root, 400, 400);
         primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 }
