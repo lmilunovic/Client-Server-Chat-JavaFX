@@ -15,7 +15,6 @@
 <BorderPane xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.ladislav.controllers.MainController">
 
-
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -24,12 +23,13 @@
                   <MenuItem onAction="#handleLogout" mnemonicParsing="false" text="Logout" />
               </items>
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem onAction="#handleCloseItem" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
+                <!--add dialog about -->
             </items>
           </Menu>
         </menus>

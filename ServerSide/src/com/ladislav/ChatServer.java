@@ -19,14 +19,12 @@ public class ChatServer {
         clients = new ConcurrentHashMap<>();
     }
 
-
     /**
      * Thread that handles client that are logged to the server.
      * It handles clients login, logout, indirect client-client communication, broadcast communication
      */
 
     private class ClientHandler extends Thread {
-
         private String name;
         private Socket socket;
         private BufferedReader in;

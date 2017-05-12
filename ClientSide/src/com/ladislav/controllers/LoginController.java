@@ -63,6 +63,7 @@ public class LoginController implements MessageObserver{
 
             stage.setOnCloseRequest(t -> {
                 model.requestLogout();
+                Platform.exit();
                 System.exit(0);
             });
             stage.hide();

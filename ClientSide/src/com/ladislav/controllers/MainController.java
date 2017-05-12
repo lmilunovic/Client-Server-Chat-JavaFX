@@ -142,7 +142,6 @@ public class MainController implements MessageObserver {
     }
 
 
-    //FIXME
     public void handleLogout(ActionEvent actionEvent) throws IOException {
         model.requestLogout();
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
@@ -160,6 +159,11 @@ public class MainController implements MessageObserver {
             stage.setScene(scene);
             stage.show();
         });
+    }
 
+    public void handleCloseItem(){
+        model.requestLogout();
+        Platform.exit();
+        System.exit(0);
     }
 }

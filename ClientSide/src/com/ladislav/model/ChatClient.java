@@ -17,7 +17,6 @@ import static com.ladislav.ClientProtocols.*;
 // Maybe keep session in file?
 // Hold ObservableList of sessions instead of Notifier thing ?
 
-
 // TODO model reset() method when logging out or reset in finally ?
 public class ChatClient implements Notifier {
 
@@ -40,10 +39,11 @@ public class ChatClient implements Notifier {
 
     public void start(String name, String password) {
         this.name = name;
-        logoutRequested = false;
         this.password = password;
+        logoutRequested = false;
         Receiver receiver = new Receiver();
         receiver.start();
+
     }
 
     public void sendPrivateMessage(String to, String message) {
@@ -72,8 +72,10 @@ public class ChatClient implements Notifier {
     public void requestLogout() {
         // can I stop/interrupt thread from in here instead of boolean
         // and send logout request to server ?
-        out.println(LOGOUT_REQUEST);
-        out.println(name);
+        if (name != null) {
+            out.println(LOGOUT_REQUEST);
+            out.println(name);
+        }
     }
 
     public String getName() {
@@ -82,7 +84,6 @@ public class ChatClient implements Notifier {
 
     private class Receiver extends Thread {
 
-        // na logout
         @Override
         public void run() {
 
@@ -97,10 +98,7 @@ public class ChatClient implements Notifier {
                 if (success) {
                     System.out.println("Logged in successfully !");
                     getOnlineMembers();
-                    while (true) {
-                        if (logoutRequested) {
-                            break;
-                        }
+                    while (!logoutRequested) {
                         receiveMessage();
                     }
                 }
@@ -109,7 +107,6 @@ public class ChatClient implements Notifier {
             } finally {
                 observers = new HashSet<>();
                 System.out.println("Logged out successfully !");
-
             }
         }
 
