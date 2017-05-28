@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane fx:controller="com.ladislav.controllers.RegisterDialogController" xmlns:fx="http://javafx.com/fxml">
+
+    <content>
+        <GridPane vgap="15" hgap="15">
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Username:">
+
+            </Label>
+            <TextField fx:id="userNameRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" text="Ladislav">
+
+            </TextField>
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Password:">
+
+            </Label>
+            <PasswordField fx:id="passwordRegTextField"  GridPane.columnIndex="1" GridPane.rowIndex="1">
+
+            </PasswordField>
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="E-mail:">
+
+            </Label>
+            <TextField fx:id="emailRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" text="ladislav@email.com">
+
+            </TextField>
+        </GridPane>
+
+    </content>
+</DialogPane>

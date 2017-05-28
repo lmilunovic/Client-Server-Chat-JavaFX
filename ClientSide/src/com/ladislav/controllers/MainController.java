@@ -34,7 +34,7 @@ public class MainController implements MessageObserver {
     @FXML
     Button sendMessageBtn;
 
-    String lastSelectedClient;
+    private String lastSelectedClient;
 
     public void initialise(ChatClient model, Stage stage) {
         this.model = model;
@@ -65,18 +65,20 @@ public class MainController implements MessageObserver {
         }
     }
 
-    public void sendPrivateMessage() {
+    private void sendPrivateMessage() {
         String name = lastSelectedClient;
         String message = messageTextField.getText().trim();
         if (!message.equals("")) {
-            model.sendPrivateMessage(name, message);
-            msgSession.appendText(model.getName() + " : " + message + "\n");
-            messageTextField.clear();
+            return;
         }
+
+        model.sendPrivateMessage(name, message);
+        msgSession.appendText(model.getName() + " : " + message + "\n");
+        messageTextField.clear();
     }
 
     //TODO finish me
-    public void sendBroadcastMessage() {
+    private void sendBroadcastMessage() {
         String message = messageTextField.getText();
         messageTextField.clear();
         model.sendBroadcastMessage(message);
@@ -99,10 +101,10 @@ public class MainController implements MessageObserver {
     @Override
     public void newBroadCastMessageReceived(Message msg) {
 
-        if (listView.getSelectionModel().getSelectedItem().equals("BROADCAST")){
+        if (listView.getSelectionModel().getSelectedItem().equals("BROADCAST")) {
             msgSession.appendText(msg.getMessageBody() + "\n");
         }
-        // change color of cell (Cell Factory javaFX)
+        // TODO change color of cell (Cell Factory javaFX)
         // later on: make it blinking
 
     }
@@ -110,7 +112,7 @@ public class MainController implements MessageObserver {
 
     @Override
     public void newLoginAnnouncement(Message msg) {
-        // get sender OR: update whole list with new unmodifiable sorted one !?
+        // TODO get sender OR: update whole list with new unmodifiable sorted one !?
         Platform.runLater(() -> {
             listView.getItems().add(msg.getSender());
         });
@@ -119,10 +121,8 @@ public class MainController implements MessageObserver {
 
     @Override
     public void newLogoutAnnouncement(Message msg) {
-        // get sender OR: update whole list with new unmodifiable sorted one !?
-        Platform.runLater(() -> {
-            listView.getItems().remove(msg.getSender());
-        });
+        //TODO  get sender OR: update whole list with new unmodifiable sorted one !?
+        Platform.runLater(() -> listView.getItems().remove(msg.getSender()));
     }
 
     //TODO finish me
@@ -138,6 +138,16 @@ public class MainController implements MessageObserver {
 
     @Override
     public void loginFailedMessage(Message msg) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void registerSuccessMessage(Message msg) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void registerFailMessage(Message msg) {
         throw new UnsupportedOperationException();
     }
 
@@ -161,7 +171,7 @@ public class MainController implements MessageObserver {
         });
     }
 
-    public void handleCloseItem(){
+    public void handleCloseItem() {
         model.requestLogout();
         Platform.exit();
         System.exit(0);

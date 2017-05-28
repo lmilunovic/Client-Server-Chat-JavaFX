@@ -1,12 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="javafx" build-on-make="true" name="ClientSide">
+  <artifact type="javafx" name="ClientSide">
     <output-path>$PROJECT_DIR$/out/artifacts/ClientSide</output-path>
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="com.ladislav.view.LoginPanel" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
-        <option name="title" value="" />
+        <option name="title" value="ChatApp" />
         <option name="vendor" value="" />
         <option name="version" value="" />
       </options>

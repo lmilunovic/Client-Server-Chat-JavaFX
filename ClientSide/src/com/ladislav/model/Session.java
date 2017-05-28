@@ -8,16 +8,29 @@ import java.util.List;
  */
 class Session {
 
-    private final String clientName;
     private final List<String> messages;
+    private boolean newMessage;
+    private boolean online;
 
-    public Session(String clientName) {
-        this.clientName = clientName;
+    public Session() {
         this.messages = new ArrayList<>();
+        online = true;
     }
 
-    public String getClientName() {
-        return clientName;
+    public boolean newMessageReceived(){
+        return newMessage;
+    }
+
+    public void newMessageRead(){
+        newMessage = false;
+    }
+
+   public void changeOnlineStatus(boolean online) {
+       this.online = online;
+   }
+
+    public boolean isOnline() {
+        return online;
     }
 
     public List<String> getMessages() {
@@ -30,5 +43,6 @@ class Session {
 
     public void addMessage(String msg) {
         messages.add(msg);
+        newMessage = true;
     }
 }

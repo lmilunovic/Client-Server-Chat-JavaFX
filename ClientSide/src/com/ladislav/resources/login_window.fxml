@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
+<BorderPane fx:id="loginBorderPane" fx:controller="com.ladislav.controllers.LoginController"
+            xmlns:fx="http://javafx.com/javafx/8.0.76-ea">
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.76-ea" fx:controller="com.ladislav.controllers.LoginController">
-    <padding>
-        <Insets bottom="10" left="25" right="25" top="25" />
-    </padding>
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Configure"/>
+                        <MenuItem mnemonicParsing="false" text="Exit"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                        <!--add dialog about -->
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
 
-    <Text text="Enter your username and password to login into the chat server:" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+    <center>
+        <GridPane vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
 
-    <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
+                  text="Enter your username and password to login into the chat server:"/>
 
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="User Name:"/>
 
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField"/>
 
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleLoginAction" />
+            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-    <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button onAction="#handleLoginAction"  prefHeight="15.0" prefWidth="85.0" text="Login"/>
-    </HBox>
+            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                           onAction="#handleLoginAction"/>
 
-    <Text fx:id="actiontarget"   GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-    <Text fx:id="failMessage" text="Test" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+            <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                  GridPane.columnSpan="2">
+                <Button HBox.hgrow="ALWAYS"
+                        onAction="#handleLoginAction" prefHeight="15.0" prefWidth="85.0" text="Login"/>
+                <Hyperlink onAction="#loadRegisterDialog" fx:id="registerHyperlink" text="or register?">
 
-</GridPane>
+                </Hyperlink>
+            </HBox>
+
+            <Text GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="4" fx:id="resultMessage" text=""/>
+
+        </GridPane>
+    </center>
+
+</BorderPane>

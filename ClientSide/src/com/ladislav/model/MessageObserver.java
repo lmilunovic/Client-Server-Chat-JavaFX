@@ -14,6 +14,8 @@ public interface MessageObserver {
     void newLogoutAnnouncement(Message msg);
     void loginSuccessMessage(Message msg);
     void loginFailedMessage(Message msg);
+    void registerSuccessMessage(Message msg);
+    void registerFailMessage(Message msg);
 
 }
 

@@ -11,6 +11,7 @@ public class Message {
     private String receiver;
     private String messageBody;
 
+
     public Message(int protocol, String sender, String receiver, String messageBody) {
         this.protocol = protocol;
         this.sender = sender;
