@@ -81,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="configuration_dialog.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="configuration_dialog.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/configuration_dialog.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
@@ -90,6 +90,20 @@
             <state relative-caret-position="85">
               <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="90" column="100" selection-start-line="90" selection-start-column="100" selection-end-line="90" selection-end-column="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />
+                <element signature="method#validateRegistrationParams#0;class#LoginController#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,7 +159,6 @@
         <option value="$PROJECT_DIR$/src/com/ladislav/model/ClientProtocols.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/model/InputValidator.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/about_app_dialog.fxml" />
-        <option value="$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/model/ChatClient.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/controllers/ConfigurationDialogController.java" />
@@ -154,6 +167,7 @@
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/register_dialog.fxml" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/configuration_dialog.fxml" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java" />
       </list>
     </option>
   </component>
@@ -270,6 +284,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClientSide" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClientSide" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ladislav" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -826,12 +866,12 @@
       <workItem from="1494691766344" duration="4616000" />
       <workItem from="1495091408589" duration="3448000" />
       <workItem from="1495444855003" duration="3302000" />
-      <workItem from="1495696123127" duration="45643000" />
+      <workItem from="1495696123127" duration="46678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197630000" />
+    <option name="totallyTimeSpent" value="198665000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -855,7 +895,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35679215" sideWeight="0.49394855" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35679215" sideWeight="0.49394855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -980,7 +1020,7 @@
         <state relative-caret-position="3587">
           <caret line="211" column="37" selection-start-line="211" selection-start-column="37" selection-end-line="211" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1031,7 +1071,7 @@
         <state relative-caret-position="1309">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1080,7 +1120,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1104,7 +1144,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1120,7 +1160,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1257,7 +1297,7 @@
         <state relative-caret-position="-2265">
           <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
             <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
@@ -1297,18 +1337,6 @@
         <state relative-caret-position="119">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
-          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />
-            <element signature="method#validateRegistrationParams#0;class#LoginController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1379,6 +1407,18 @@
         <state relative-caret-position="85">
           <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="90" column="100" selection-start-line="90" selection-start-column="100" selection-end-line="90" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />
+            <element signature="method#validateRegistrationParams#0;class#LoginController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

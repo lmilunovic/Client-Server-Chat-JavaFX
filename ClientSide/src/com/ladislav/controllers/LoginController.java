@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -87,6 +88,11 @@ public class LoginController implements MessageObserver {
         dialog.initOwner(loginBorderPane.getScene().getWindow());
         dialog.setTitle("Register");
         dialog.setHeaderText(" Enter username, password and email to register to the server.");
+        ImageView image = new ImageView(this.getClass().getResource("../resources/icons/registration.png").toString());
+        image.setFitHeight(80);
+        image.setFitWidth(80);
+        dialog.setGraphic(image);
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../resources/register_dialog.fxml"));
         dialog.getDialogPane().setContent(fxmlLoader.load());
@@ -115,10 +121,14 @@ public class LoginController implements MessageObserver {
         configDialog.initOwner(loginBorderPane.getScene().getWindow());
         configDialog.setTitle("Configuration");
         configDialog.setHeaderText("Here you can provide server IP and port on which server listens.");
+        ImageView image = new ImageView(this.getClass().getResource("../resources/icons/configuration.png").toString());
+        image.setFitHeight(80);
+        image.setFitWidth(80);
+        configDialog.setGraphic(image);
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../resources/configuration_dialog.fxml"));
         configDialog.getDialogPane().setContent(fxmlLoader.load());
-
         configDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         configDialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
