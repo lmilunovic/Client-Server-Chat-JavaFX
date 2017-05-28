@@ -3,21 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<BorderPane fx:id="loginBorderPane" fx:controller="com.ladislav.controllers.LoginController" xmlns:fx="http://javafx.com/javafx/8.0.76-ea">
+<BorderPane fx:id="loginBorderPane" fx:controller="com.ladislav.controllers.LoginController"
+            xmlns:fx="http://javafx.com/javafx/8.0.76-ea">
 
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Configure"/>
-                    <MenuItem mnemonicParsing="false" text="Exit"/>
-                </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                        <!--add dialog about -->
+                        <MenuItem onAction="#loadConfigureDialog" mnemonicParsing="false" text="Configure"/>
+                        <MenuItem onAction="#handleExit" mnemonicParsing="false" text="Exit"/>
                     </items>
                 </Menu>
             </menus>
@@ -25,46 +20,32 @@
     </top>
 
     <center>
-    <GridPane vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
 
-        <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
-              text="Enter your username and password to login into the chat server:"/>
+            <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
+                  text="Enter your username and password to login into the chat server:"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="User Name:"/>
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="User Name:"/>
 
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField"/>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField"/>
 
-        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
-        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleLoginAction"/>
+            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                           onAction="#handleLoginAction"/>
 
-        <Label fx:id="addressField" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3" text="IP address:">
+            <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                  GridPane.columnSpan="2">
+                <Button HBox.hgrow="ALWAYS"
+                        onAction="#handleLoginAction" prefHeight="15.0" prefWidth="85.0" text="Login"/>
+                <Hyperlink onAction="#loadRegisterDialog" fx:id="registerHyperlink" text="or register?">
 
-        </Label>
+                </Hyperlink>
+            </HBox>
 
-        <TextField fx:id="portField" GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" text="127.0.0.1">
+            <Text GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="4" fx:id="resultMessage" text=""/>
 
-        </TextField>
-
-        <Label GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="4"  text="PORT:">
-
-        </Label>
-
-        <TextField  GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" text="12000">
-
-        </TextField>
-
-        <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2">
-            <Button  HBox.hgrow="ALWAYS"
-                    onAction="#handleLoginAction" prefHeight="15.0" prefWidth="85.0" text="Login"/>
-            <Hyperlink onAction="#loadRegisterDialog" fx:id="registerHyperlink" text="or register?">
-
-            </Hyperlink>
-        </HBox>
-
-        <Text GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="6" fx:id="resultMessage" text="" />
-
-    </GridPane>
+        </GridPane>
     </center>
 
 </BorderPane>

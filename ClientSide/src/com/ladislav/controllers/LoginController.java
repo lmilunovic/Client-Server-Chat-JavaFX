@@ -19,17 +19,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-/**
- * Created by Ladislav on 5/8/2017.
- */
+
 public class LoginController implements MessageObserver {
 
     private ChatClient model;
 
     @FXML
-    public Hyperlink registerHyperlink;
+    private Stage stage;
     @FXML
-    Stage stage;
+    public Hyperlink registerHyperlink;
     @FXML
     TextField usernameField;
     @FXML
@@ -82,6 +80,7 @@ public class LoginController implements MessageObserver {
 
     }
 
+
     @FXML
     public void loadRegisterDialog() throws IOException {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -90,14 +89,7 @@ public class LoginController implements MessageObserver {
         dialog.setHeaderText(" Enter username, password and email to register to the server.");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../resources/register_dialog.fxml"));
-
-        try {
-            dialog.getDialogPane().setContent(fxmlLoader.load());
-        } catch (IOException e) {
-            System.out.println("Couldn't load the dialog because your code sucks.");
-            e.printStackTrace();
-            return;
-        }
+        dialog.getDialogPane().setContent(fxmlLoader.load());
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
@@ -113,10 +105,40 @@ public class LoginController implements MessageObserver {
             if (validateRegistrationParams(username, password, email)) {
                 model.register(username, password, email);
             }
-
         }
 
     }
+
+    @FXML
+    public void loadConfigureDialog() throws IOException {
+        Dialog<ButtonType> configDialog = new Dialog<>();
+        configDialog.initOwner(loginBorderPane.getScene().getWindow());
+        configDialog.setTitle("Configuration");
+        configDialog.setHeaderText("Here you can provide server IP and port on which server listens.");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../resources/configuration_dialog.fxml"));
+        configDialog.getDialogPane().setContent(fxmlLoader.load());
+
+        configDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        configDialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = configDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            ConfigurationDialogController dialogController = fxmlLoader.getController();
+
+            String serverIP = dialogController.getServerIP();
+            String PORT = dialogController.getServerPORT();
+            //TODO validate ip and port
+            model.setIPAndPORT(serverIP, PORT);
+        }
+    }
+
+    @FXML
+    public void handleExit() {
+        Platform.exit();
+        System.exit(0);
+    }
+
 
     @Override
     public void loginSuccessMessage(Message msg) {
@@ -129,7 +151,7 @@ public class LoginController implements MessageObserver {
 
     @Override
     public void loginFailedMessage(Message msg) {
-        resultMessage.setText("Login Failed !");
+        resultMessage.setText(msg.getMessageBody());
     }
 
     @Override
@@ -142,7 +164,7 @@ public class LoginController implements MessageObserver {
         resultMessage.setText(msg.getMessageBody());
     }
 
-    public boolean validateRegistrationParams(String username, String password, String email) {
+    private boolean validateRegistrationParams(String username, String password, String email) {
         if (!InputValidator.validateUsername(username)) { // EXTRACT USERNAME_PATTERN_MATCH
             resultMessage.setText("Username must start with letter and contain only letters, numbers _ and - signs.");
             return false;

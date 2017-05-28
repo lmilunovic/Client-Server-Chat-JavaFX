@@ -8,11 +8,12 @@ import java.util.regex.Pattern;
  */
 public class InputValidator {
 
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public static final Pattern VALID_USERNAME_REGEX = Pattern.compile("^[A-Za-z]+[A-Za-z_/-0-9]{2,15}");
+    private static final Pattern VALID_USERNAME_REGEX = Pattern.compile("^[A-Za-z]+[A-Za-z_/-0-9]{2,15}");
 
+    //TODO make password validation, server address validation and port
 
     public static boolean validateUsername(String username) {
         Matcher matcher = VALID_USERNAME_REGEX.matcher(username);

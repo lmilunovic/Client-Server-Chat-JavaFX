@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <DialogPane fx:controller="com.ladislav.controllers.RegisterDialogController" xmlns:fx="http://javafx.com/fxml">
@@ -10,21 +8,21 @@
             <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Username:">
 
             </Label>
-            <TextField fx:id="userNameRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" text="Ladislav">
+            <TextField fx:id="userNameRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Example: Ladislav">
 
             </TextField>
 
             <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Password:">
 
             </Label>
-            <PasswordField fx:id="passwordRegTextField"  GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <PasswordField fx:id="passwordRegTextField"  GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Desired Password">
 
             </PasswordField>
 
             <Label GridPane.columnIndex="0" GridPane.rowIndex="2" text="E-mail:">
 
             </Label>
-            <TextField fx:id="emailRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" text="ladislav@email.com">
+            <TextField fx:id="emailRegTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="email@example.com">
 
             </TextField>
         </GridPane>

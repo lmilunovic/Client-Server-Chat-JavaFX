@@ -45,7 +45,6 @@ public class ChatClient implements Notifier {
         serverPort = Integer.parseInt(port);
     }
 
-    // Easiest way to implement registration at this moment
     public void register(String name, String password, String email) {
         Thread t = new Thread(() -> {
             try (Socket clientSocket = new Socket(serverAddress, serverPort);
@@ -135,43 +134,43 @@ public class ChatClient implements Notifier {
 
         private void login() throws IOException {
 
-            while (true) {
-                //gets welcome message
-                int protocol = Integer.parseInt(in.readLine());
-                if (protocol != WELCOME_MESSAGE) {
-                    throw new ProtocolException("Wrong protocol received: " + protocol +
-                            ". Expected protocol: " + WELCOME_MESSAGE);
-                }
 
-                // sends back login request and user name
-                out.println(LOGIN_REQUEST);
-                out.println(name);
-                out.println(password);
-
-                // server responds if login was successful
-                protocol = Integer.parseInt(in.readLine());
-                String from = in.readLine();
-                String message = in.readLine();
-
-                if (protocol == LOGIN_SUCCESS) {
-                    System.out.println("Login success");
-                    //initialising broadcast session
-                    sessionMap = new HashMap<>();
-                    Session broadCastSession = new Session();
-                    broadCastSession.addMessage(message);
-                    sessionMap.put("BROADCAST", broadCastSession);
-
-                    notifyObservers(new Message(protocol, from, name, message));
-                    System.out.println("Logged in successfully !");
-                    return;
-
-                } else if (protocol == LOGIN_FAILED) {
-                    notifyObservers(new Message(protocol, from, name, message));
-                    return;
-                } else {
-                    throw new ProtocolException();
-                }
+            //gets welcome message
+            int protocol = Integer.parseInt(in.readLine());
+            if (protocol != WELCOME_MESSAGE) {
+                throw new ProtocolException("Wrong protocol received: " + protocol +
+                        ". Expected protocol: " + WELCOME_MESSAGE);
             }
+
+            // sends back login request and user name
+            out.println(LOGIN_REQUEST);
+            out.println(name);
+            out.println(password);
+
+            // server responds if login was successful
+            protocol = Integer.parseInt(in.readLine());
+            String from = in.readLine();
+            String message = in.readLine();
+
+            if (protocol == LOGIN_SUCCESS) {
+                System.out.println("Login success");
+                //initialising broadcast session
+                sessionMap = new HashMap<>();
+                Session broadCastSession = new Session();
+                broadCastSession.addMessage(message);
+                sessionMap.put("BROADCAST", broadCastSession);
+
+                notifyObservers(new Message(protocol, from, name, message));
+                System.out.println("Logged in successfully !");
+
+
+            } else if (protocol == LOGIN_FAILED) {
+                notifyObservers(new Message(protocol, from, name, message));
+
+            } else {
+                throw new ProtocolException();
+            }
+
         }
 
         private void receiveMessage() throws IOException {
@@ -219,7 +218,6 @@ public class ChatClient implements Notifier {
 
     @Override
     public void notifyObservers(Message m) {
-        System.out.println("Notifying observers");
         if (m == null) {
             throw new NullPointerException("Message is null !");
         }
@@ -251,7 +249,6 @@ public class ChatClient implements Notifier {
                     observer.loginSuccessMessage(m);
                     break;
                 case REGISTER_SUCCESS:
-                    System.out.println("Register success");
                     observer.registerSuccessMessage(m);
                     break;
                 case REGISTER_FAILED:

@@ -11,14 +11,8 @@
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Configure"/>
-                        <MenuItem mnemonicParsing="false" text="Exit"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About"/>
-                        <!--add dialog about -->
+                        <MenuItem onAction="#loadConfigureDialog" mnemonicParsing="false" text="Configure"/>
+                        <MenuItem onAction="#handleExit" mnemonicParsing="false" text="Exit"/>
                     </items>
                 </Menu>
             </menus>
@@ -31,14 +25,14 @@
             <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
                   text="Enter your username and password to login into the chat server:"/>
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="User Name:"/>
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Username:"/>
 
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField"/>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField" promptText="Example: Ladislav"/>
 
             <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
             <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                           onAction="#handleLoginAction"/>
+                           onAction="#handleLoginAction" promptText="Your Password"/>
 
             <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3"
                   GridPane.columnSpan="2">

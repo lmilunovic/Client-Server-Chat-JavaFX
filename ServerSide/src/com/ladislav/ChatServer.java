@@ -55,14 +55,15 @@ public class ChatServer {
                 if (protocol == REGISTER_REQUEST) {
                     handleRegister();
                 } else if (protocol == LOGIN_REQUEST) {
-                    handleLogin();
-                    sendOnlineClients();
-                    listenAndServe();
+                    boolean loginSuccess = handleLogin();
+                    if (loginSuccess) {
+                        sendOnlineClients();
+                        listenAndServe();
+                    }
                 } else {
                     throw new ProtocolException("Wrong protocol received: " + protocol +
                             "Expected protocol: " + REGISTER_REQUEST + " or " + LOGIN_REQUEST);
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -71,8 +72,8 @@ public class ChatServer {
             }
         }
 
-        private void handleLogin() throws IOException {
-            while (true) {
+        private boolean handleLogin() throws IOException {
+
                 System.out.println("Logging in");
                 name = in.readLine();
                 password = in.readLine();
@@ -92,18 +93,14 @@ public class ChatServer {
                     sendMessage(name, LOGIN_SUCCESS, SERVER, "Welcome to Chat Server !");
                     sendMessage(ANNOUNCE_LOGIN, name, LOGIN_MESSAGE);
                     System.out.println(name + "logged in to the server");
-                    break;
+                    return true;
                 } else {
                     out.println(LOGIN_FAILED);
                     out.println(SERVER);
                     out.println("Invalid name or password.");
-                    out.println(WELCOME_MESSAGE);
-                    int protocol = Integer.parseInt(in.readLine());
-                    if (protocol != LOGIN_REQUEST) {
-                        throw new ProtocolException("Wrong protocol. Expected " + LOGIN_REQUEST);
-                    }
+                    return false;
                 }
-            }
+
         }
 
         private void sendOnlineClients() {
