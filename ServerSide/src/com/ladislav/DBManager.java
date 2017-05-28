@@ -4,9 +4,10 @@ import java.sql.*;
 import java.util.List;
 
 /**
- * Created by Ladislav on 5/26/2017.
+ *  Class that provides communication with database (sqlite in this case)
+ *  Implements database access object.
  */
-public class DBManager implements serverDAO {
+public class DBManager implements ChatServerDAO {
 
     private static final String DB_NAME = "registered_clients.db";
     private static final String CONNECTION_STRING = "jdbc:sqlite:C:\\Users\\Ladislav\\Desktop\\Java\\Chat App\\ServerSide\\src\\com\\ladislav\\" + DB_NAME;
@@ -16,6 +17,13 @@ public class DBManager implements serverDAO {
     private static final String COLUMN_EMAIL = "email";
 
 
+    /**
+     *  Connects to database and calls insertContact method.
+     * @param name
+     * @param password
+     * @param email
+     * @return true if insertion was successful.
+     */
     @Override
     public boolean registerClient(String name, String password, String email) {
 
@@ -32,7 +40,12 @@ public class DBManager implements serverDAO {
         return registered;
     }
 
-
+    /**
+     * Connects to a database and calls approveLogin.
+     * @param name
+     * @param password
+     * @return true if name and password matched the ones in database.
+     */
     public boolean clientLogin(String name, String password) {
         boolean loginApproved = false;
 
@@ -46,20 +59,28 @@ public class DBManager implements serverDAO {
         return loginApproved;
     }
 
-    // This works correctly cause client name is set as primary key in db
+    /**
+     *  Executes actual SQL query and returns results of execution.
+     *  It works correctly since username is primary key in database.
+     *
+     * @param statement
+     * @param name
+     * @param password
+     * @return false if ResultSet is empty.
+     * @throws SQLException
+     */
     private boolean approveLogin(Statement statement, String name, String password) throws SQLException {
 
         ResultSet rs = statement.executeQuery("SELECT * FROM " + TABLE_CLIENT +
                 " WHERE " + COLUMN_NAME + "=" + "'" + name + "'" +
                 " AND " + COLUMN_PASSWORD + "=" + "'" + password + "'");
 
-        if (rs.next()) {
-            return true;
-        }
-        return false;
+        return rs.next();
     }
 
     /**
+     * Connects to database and uses selectContact method.
+     *
      * @param name String
      * @return Client object if client with that name exists, and null if not.
      */
@@ -73,7 +94,6 @@ public class DBManager implements serverDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return client;
     }
 
@@ -84,6 +104,13 @@ public class DBManager implements serverDAO {
     }
 
 
+    /**
+     * Executes actual SQL query to select single contact.
+     * @param statement
+     * @param name
+     * @return returns Client object only if username and password provided match ones in database
+     * @throws SQLException
+     */
     private Client selectContact(Statement statement, String name) throws SQLException {
         ResultSet rs = statement.executeQuery("SELECT * FROM" + TABLE_CLIENT + "WHERE" + COLUMN_NAME + "=" + name);
 
@@ -94,6 +121,15 @@ public class DBManager implements serverDAO {
         return null;
     }
 
+    /**
+     *  Executes actual sql query for insertion.
+     * @param statement
+     * @param name
+     * @param password
+     * @param email
+     * @return true if row count for insert is greater than 0
+     * @throws SQLException
+     */
     private boolean insertContact(Statement statement, String name, String password, String email) throws SQLException {
         System.out.println("Inserting contact");
 

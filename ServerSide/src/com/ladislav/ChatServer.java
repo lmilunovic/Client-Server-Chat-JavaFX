@@ -12,6 +12,13 @@ import java.util.concurrent.ConcurrentMap;
 
 import static com.ladislav.ChatAppProtocols.*;
 
+/**
+ *  Main class that acts as server for chat application.
+ *  On start it turns on and listens and accepts any incoming connection and
+ *  Instantiates new ClientHandler thread to deal with login/communication or registration
+ *  Login and registration are going trough DBManager object. It uses custom defined protocols for communication.
+ */
+
 public class ChatServer {
 
     private ConcurrentMap<String, PrintWriter> clients;
@@ -51,19 +58,24 @@ public class ChatServer {
 
                 out.println(WELCOME_MESSAGE);
                 int protocol = Integer.parseInt(in.readLine());
-                System.out.println("Protocol");
-                if (protocol == REGISTER_REQUEST) {
-                    handleRegister();
-                } else if (protocol == LOGIN_REQUEST) {
-                    boolean loginSuccess = handleLogin();
-                    if (loginSuccess) {
-                        sendOnlineClients();
-                        listenAndServe();
-                    }
-                } else {
-                    throw new ProtocolException("Wrong protocol received: " + protocol +
-                            "Expected protocol: " + REGISTER_REQUEST + " or " + LOGIN_REQUEST);
+
+                switch (protocol) {
+                    case REGISTER_REQUEST:
+                        handleRegister();
+                        break;
+                    case LOGIN_REQUEST:
+                        // probably can be done neater :)
+                        boolean loginSuccess = handleLogin();
+                        if (loginSuccess) {
+                            sendOnlineClients();
+                            listenAndServe();
+                        }
+                        break;
+                    default:
+                        throw new ProtocolException("Wrong protocol received: " + protocol +
+                                "Expected protocol: " + REGISTER_REQUEST + " or " + LOGIN_REQUEST);
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -74,19 +86,16 @@ public class ChatServer {
 
         private boolean handleLogin() throws IOException {
 
-                System.out.println("Logging in");
                 name = in.readLine();
                 password = in.readLine();
 
                 if (name == null || password == null) {
                     out.println(LOGIN_FAILED);
                     out.println(SERVER);
-                    out.println("Invalid input received.");
-                    throw new IOException();
+                    throw new NullPointerException();
                 }
 
                 boolean loginSuccess = dbManager.clientLogin(name, password);
-                System.out.println("Login success?");
                 //maybe send proper message for login failed if client already logged in
                 if (loginSuccess && !clients.containsKey(name)) {
                     clients.put(name, out);
@@ -150,8 +159,9 @@ public class ChatServer {
             }
         }
 
+
+
         private void handleRegister() throws IOException {
-            System.out.println("Handling register");
 
             name = in.readLine();
             password = in.readLine();
@@ -203,7 +213,7 @@ public class ChatServer {
     }
 
     /**
-     * Sends broadcast message to all clients.
+     * Sends broadcast message to all the clients.
      *
      * @param protocol Protocol number of message.
      * @param from     Name of the sender client.
@@ -218,6 +228,12 @@ public class ChatServer {
         }
     }
 
+
+    /**
+     *  When this method is called server will start listening for new connections.
+     *  Server runs forever, like servers usually do. :)
+     * @param port
+     */
     public void start(int port) {
 
         try (ServerSocket connectionListener = new ServerSocket(port)) {

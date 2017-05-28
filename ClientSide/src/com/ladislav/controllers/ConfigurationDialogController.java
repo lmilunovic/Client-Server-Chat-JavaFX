@@ -3,9 +3,6 @@ package com.ladislav.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-/**
- * Created by Ladislav on 5/28/2017.
- */
 public class ConfigurationDialogController {
 
     @FXML

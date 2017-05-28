@@ -7,10 +7,14 @@ import static com.ladislav.ChatAppProtocols.PORT;
  */
 public class Main {
 
+    private static int port = PORT;
     public static void main(String[] args) {
 
+        if (args.length > 0) {
+            port = Integer.parseInt(args[0]);
+        }
         ChatServer server = new ChatServer();
-        server.start(PORT);
+        server.start(port);
         //thread for console
 
     }

@@ -10,9 +10,6 @@ import java.util.*;
 
 import static com.ladislav.model.ClientProtocols.*;
 
-// TODO IDEAS:
-// Provide some options menu to set server's IP address and port manually
-// Model reset() method when logging out or reset in finally ?
 
 public class ChatClient implements Notifier {
 
@@ -118,22 +115,22 @@ public class ChatClient implements Notifier {
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-                login();
-                getOnlineMembers();
-                while (!logoutRequested) {
-                    receiveMessage();
+                boolean loginSuccess = login();
+                if (loginSuccess) {
+                    getOnlineMembers();
+                    while (!logoutRequested) {
+                        receiveMessage();
+                    }
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
                 observers = new HashSet<>();
-                System.out.println("Logged out successfully !");
             }
         }
 
-        private void login() throws IOException {
-
+        private boolean login() throws IOException {
 
             //gets welcome message
             int protocol = Integer.parseInt(in.readLine());
@@ -162,21 +159,21 @@ public class ChatClient implements Notifier {
 
                 notifyObservers(new Message(protocol, from, name, message));
                 System.out.println("Logged in successfully !");
-
+                return true;
 
             } else if (protocol == LOGIN_FAILED) {
                 notifyObservers(new Message(protocol, from, name, message));
-
+                return false;
             } else {
                 throw new ProtocolException();
             }
-
         }
 
         private void receiveMessage() throws IOException {
 
             int protocol = Integer.parseInt(in.readLine());
 
+            // if kick from server for example
             if (protocol == LOGOUT_REQUEST) {
                 logoutRequested = true;
                 return;
@@ -187,7 +184,6 @@ public class ChatClient implements Notifier {
             String receiver = name;
 
             notifyObservers(new Message(protocol, sender, receiver, message));
-
         }
 
         //FIXME needs better implementation

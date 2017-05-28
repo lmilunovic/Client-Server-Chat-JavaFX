@@ -22,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ChatServer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChatServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2263">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="1224">
+              <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,8 +37,18 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ladislav/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatAppProtocols.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatAppProtocols.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -47,27 +57,28 @@
       <file leaf-file-name="DBManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ladislav/DBManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+            <state relative-caret-position="2159">
+              <caret line="129" column="61" selection-start-line="129" selection-start-column="61" selection-end-line="129" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1495985236003" expanded="true" signature="1806:1883" ph="SELECT * FRO... " />
-                <marker date="1495985236003" expanded="true" signature="1806:1889" ph="SELECT * FRO... chatClients" />
-                <marker date="1495985236003" expanded="true" signature="1806:1927" ph="SELECT * FRO... " />
-                <marker date="1495985236003" expanded="true" signature="1806:1952" ph="SELECT * FRO... " />
-                <marker date="1495985236003" expanded="true" signature="1806:1975" ph="SELECT * FRO... chatClients" />
-                <marker date="1495985236003" expanded="true" signature="2816:2874" ph="SELECT * FRO... " />
-                <marker date="1495985236003" expanded="true" signature="3275:3475" ph="INSERT INTO chatClients... " />
+                <marker date="1496004497589" expanded="true" signature="2481:2558" ph="SELECT * FRO... " />
+                <marker date="1496004497589" expanded="true" signature="2481:2564" ph="SELECT * FRO... chatClients" />
+                <marker date="1496004497589" expanded="true" signature="2481:2602" ph="SELECT * FRO... " />
+                <marker date="1496004497589" expanded="true" signature="2481:2627" ph="SELECT * FRO... " />
+                <marker date="1496004497589" expanded="true" signature="2481:2650" ph="SELECT * FRO... chatClients" />
+                <marker date="1496004497589" expanded="true" signature="2692:2874" ph="/**...*/" />
+                <marker date="1496004497589" expanded="true" signature="3745:3803" ph="SELECT * FRO... " />
+                <marker date="1496004497589" expanded="true" signature="4445:4645" ph="INSERT INTO chatClients... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serverDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/serverDAO.java">
+      <file leaf-file-name="ChatServerDAO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatServerDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="69" selection-start-line="9" selection-start-column="69" selection-end-line="9" selection-end-column="69" />
+            <state relative-caret-position="85">
+              <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -97,11 +108,12 @@
         <option value="$PROJECT_DIR$/src/com/ladislav/LoginDAO.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/Client.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/dbManager.java" />
-        <option value="$PROJECT_DIR$/src/com/ladislav/Main.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/ChatAppProtocols.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/serverDAO.java" />
-        <option value="$PROJECT_DIR$/src/com/ladislav/DBManager.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/ChatServer.java" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/DBManager.java" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/ChatServerDAO.java" />
       </list>
     </option>
   </component>
@@ -664,12 +676,12 @@
       <workItem from="1494690619845" duration="3204000" />
       <workItem from="1495091917103" duration="599000" />
       <workItem from="1495696150476" duration="38894000" />
-      <workItem from="1495978127516" duration="4895000" />
+      <workItem from="1495978127516" duration="8156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131767000" />
+    <option name="totallyTimeSpent" value="135028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -681,6 +693,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -698,7 +711,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -777,18 +789,19 @@
           <caret line="11" column="143" selection-start-line="11" selection-start-column="143" selection-end-line="11" selection-end-column="143" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1495985236003" expanded="true" signature="1806:1883" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1889" ph="SELECT * FRO... chatClients" />
-            <marker date="1495985236003" expanded="true" signature="1806:1927" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1952" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1975" ph="SELECT * FRO... chatClients" />
-            <marker date="1495985236003" expanded="true" signature="2816:2874" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="3275:3475" ph="INSERT INTO chatClients... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2558" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2564" ph="SELECT * FRO... chatClients" />
+            <marker date="1496004497589" expanded="true" signature="2481:2602" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2627" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2650" ph="SELECT * FRO... chatClients" />
+            <marker date="1496004497589" expanded="true" signature="2692:2874" ph="/**...*/" />
+            <marker date="1496004497589" expanded="true" signature="3745:3803" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="4445:4645" ph="INSERT INTO chatClients... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/serverDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatServerDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="69" selection-start-line="9" selection-start-column="69" selection-end-line="9" selection-end-column="69" />
@@ -1066,23 +1079,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ladislav/Clients.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="e#291#292#0" expanded="false" />
-            <element signature="e#318#319#0" expanded="false" />
-            <element signature="e#358#359#0" expanded="false" />
-            <element signature="e#390#391#0" expanded="false" />
-            <element signature="e#425#426#0" expanded="false" />
-            <element signature="e#456#457#0" expanded="false" />
-            <element signature="e#504#505#0" expanded="false" />
-            <element signature="e#544#545#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_74/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -1118,54 +1114,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/serverDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="69" selection-start-line="9" selection-start-column="69" selection-end-line="9" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatAppProtocols.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/DBManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="53" column="55" selection-start-line="53" selection-start-column="55" selection-end-line="53" selection-end-column="55" />
+        <state relative-caret-position="289">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1495985236003" expanded="true" signature="1806:1883" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1889" ph="SELECT * FRO... chatClients" />
-            <marker date="1495985236003" expanded="true" signature="1806:1927" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1952" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="1806:1975" ph="SELECT * FRO... chatClients" />
-            <marker date="1495985236003" expanded="true" signature="2816:2874" ph="SELECT * FRO... " />
-            <marker date="1495985236003" expanded="true" signature="3275:3475" ph="INSERT INTO chatClients... " />
+            <element signature="e#291#292#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2263">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="1224">
+          <caret line="74" column="23" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatAppProtocols.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/DBManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2159">
+          <caret line="129" column="61" selection-start-line="129" selection-start-column="61" selection-end-line="129" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1496004497589" expanded="true" signature="2481:2558" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2564" ph="SELECT * FRO... chatClients" />
+            <marker date="1496004497589" expanded="true" signature="2481:2602" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2627" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="2481:2650" ph="SELECT * FRO... chatClients" />
+            <marker date="1496004497589" expanded="true" signature="2692:2874" ph="/**...*/" />
+            <marker date="1496004497589" expanded="true" signature="3745:3803" ph="SELECT * FRO... " />
+            <marker date="1496004497589" expanded="true" signature="4445:4645" ph="INSERT INTO chatClients... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/ChatServerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>

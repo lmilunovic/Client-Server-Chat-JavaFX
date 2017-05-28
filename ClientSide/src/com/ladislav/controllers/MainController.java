@@ -92,7 +92,7 @@ public class MainController implements MessageObserver {
             System.out.println(lastSelectedClient);
             msgSession.appendText(msg.getSender() + " : " + msg.getMessageBody() + "\n");
         }
-        // change color of cell (Cell Factory javaFX)
+        //TODO change color of cell (Cell Factory javaFX)
         // later on: make it blinking
 
     }
