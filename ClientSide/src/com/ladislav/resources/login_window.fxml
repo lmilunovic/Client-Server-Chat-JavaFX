@@ -20,7 +20,7 @@
     </top>
 
     <center>
-        <GridPane vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane alignment="CENTER" vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
 
             <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
                   text="Enter your username and password to login into the chat server:"/>

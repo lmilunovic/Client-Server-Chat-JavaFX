@@ -105,8 +105,8 @@ public class ChatServer {
                     return true;
                 } else {
                     out.println(LOGIN_FAILED);
-                    out.println(SERVER);
-                    out.println("Invalid name or password.");
+                   out.println(SERVER);
+                     out.println("Invalid name or password.");
                     return false;
                 }
 

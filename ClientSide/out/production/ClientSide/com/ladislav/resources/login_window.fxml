@@ -20,19 +20,19 @@
     </top>
 
     <center>
-        <GridPane vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane alignment="CENTER" vgap="15" hgap="15" xmlns:fx="http://javafx.com/fxml/1">
 
             <Text GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
                   text="Enter your username and password to login into the chat server:"/>
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="User Name:"/>
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="Username:"/>
 
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField"/>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="usernameField" promptText="Example: Ladislav"/>
 
             <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 
             <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                           onAction="#handleLoginAction"/>
+                           onAction="#handleLoginAction" promptText="Your Password"/>
 
             <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3"
                   GridPane.columnSpan="2">

@@ -26,6 +26,7 @@ public class ChatApp extends Application {
         FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
         Parent root = loginLoader.load();
         LoginController loginController = loginLoader.getController();
+        setUserAgentStylesheet(STYLESHEET_MODENA);
 
         ChatClient model = new ChatClient();
         loginController.initialise(model);

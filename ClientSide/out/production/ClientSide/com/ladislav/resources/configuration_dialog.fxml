@@ -3,18 +3,18 @@
 <?import javafx.scene.layout.*?>
 <DialogPane fx:controller="com.ladislav.controllers.ConfigurationDialogController" xmlns:fx="http://javafx.com/fxml">
     <content>
-        <GridPane vgap="15" hgap="15">
+        <GridPane alignment="CENTER" vgap="15" hgap="15">
             <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Server IP address:">
 
             </Label>
-            <TextField fx:id="serverIPTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" text="Ladislav">
+            <TextField fx:id="serverIPTextField" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Example: 127.0.0.1">
 
             </TextField>
 
             <Label GridPane.columnIndex="0" GridPane.rowIndex="1" text="PORT:">
 
             </Label>
-            <TextField fx:id="serverPortTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="serverPortTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Example: 12000">
 
             </TextField>
         </GridPane>

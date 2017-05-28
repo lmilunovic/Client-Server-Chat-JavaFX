@@ -4,7 +4,7 @@
 <DialogPane fx:controller="com.ladislav.controllers.RegisterDialogController" xmlns:fx="http://javafx.com/fxml">
 
     <content>
-        <GridPane vgap="15" hgap="15">
+        <GridPane alignment="CENTER" vgap="15" hgap="15">
             <Label GridPane.columnIndex="0" GridPane.rowIndex="0" text="Username:">
 
             </Label>
