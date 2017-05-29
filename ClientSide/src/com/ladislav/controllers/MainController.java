@@ -154,7 +154,7 @@ public class MainController implements MessageObserver {
 
     public void handleLogout(ActionEvent actionEvent) throws IOException {
         model.requestLogout();
-        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/layouts/login_window.fxml"));
         Parent root = loginLoader.load();
         LoginController loginController = loginLoader.getController();
 

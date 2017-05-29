@@ -23,7 +23,7 @@ public class ChatApp extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/login_window.fxml"));
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("../resources/layouts/login_window.fxml"));
         Parent root = loginLoader.load();
         LoginController loginController = loginLoader.getController();
         setUserAgentStylesheet(STYLESHEET_MODENA);

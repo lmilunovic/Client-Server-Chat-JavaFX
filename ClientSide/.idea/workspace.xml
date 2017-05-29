@@ -32,18 +32,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ChatClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/model/ChatClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-16">
+              <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
+              <folding>
+                <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
+                <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
+                <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
+                <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
+                <element signature="method#addMessageObserver#0;class#ChatClient#0" expanded="false" />
+                <element signature="method#removeMessageObserver#0;class#ChatClient#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ChatApp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ladislav/view/ChatApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+            <state relative-caret-position="217">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="main_window.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/main_window.fxml">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/main_window.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
@@ -55,21 +72,35 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="123" column="66" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />
+                <element signature="method#validateRegistrationParams#0;class#LoginController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="login_window.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/login_window.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state relative-caret-position="106">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="register_dialog.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/register_dialog.fxml">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/register_dialog.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
@@ -82,7 +113,7 @@
         </entry>
       </file>
       <file leaf-file-name="configuration_dialog.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/configuration_dialog.fxml">
+        <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/configuration_dialog.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
           </provider>
@@ -90,20 +121,6 @@
             <state relative-caret-position="85">
               <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="90" column="100" selection-start-line="90" selection-start-column="100" selection-end-line="90" selection-end-column="100" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />
-                <element signature="method#validateRegistrationParams#0;class#LoginController#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -162,11 +179,11 @@
         <option value="$PROJECT_DIR$/src/com/ladislav/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/model/ChatClient.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/controllers/ConfigurationDialogController.java" />
-        <option value="$PROJECT_DIR$/src/com/ladislav/view/ChatApp.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/main_window.fxml" />
-        <option value="$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/register_dialog.fxml" />
         <option value="$PROJECT_DIR$/src/com/ladislav/resources/configuration_dialog.fxml" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml" />
+        <option value="$PROJECT_DIR$/src/com/ladislav/view/ChatApp.java" />
         <option value="$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java" />
       </list>
     </option>
@@ -286,6 +303,10 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -373,6 +394,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ladislav\Desktop\Java\Chat App\ClientSide\src\com\ladislav\resources\layouts" />
       <recent name="C:\Users\Ladislav\Desktop\Java\Chat App\ClientSide\src\com\ladislav\resources" />
       <recent name="C:\Users\Ladislav\Desktop\Java\Chat App\ClientSide\src\com\ladislav\view" />
       <recent name="C:\Users\Ladislav\Desktop\Java\Chat App\ClientSide\src\com\ladislav" />
@@ -866,12 +888,12 @@
       <workItem from="1494691766344" duration="4616000" />
       <workItem from="1495091408589" duration="3448000" />
       <workItem from="1495444855003" duration="3302000" />
-      <workItem from="1495696123127" duration="46678000" />
+      <workItem from="1495696123127" duration="50984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198665000" />
+    <option name="totallyTimeSpent" value="202971000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -899,7 +921,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24432677" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27836612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1004,7 +1026,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/main_window.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/main_window.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1055,7 +1077,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/main_window.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/main_window.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1105,7 +1127,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/login_window.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1292,22 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/model/ChatClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2265">
-          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
-            <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
-            <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
-            <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
-            <element signature="method#addMessageObserver#0;class#ChatClient#0" expanded="false" />
-            <element signature="method#removeMessageObserver#0;class#ChatClient#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/ConfigurationDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1358,7 +1364,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/main_window.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/main_window.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1369,26 +1375,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/view/ChatApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/login_window.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/register_dialog.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/register_dialog.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1399,7 +1386,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/configuration_dialog.fxml">
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/configuration_dialog.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
@@ -1410,10 +1397,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/resources/layouts/login_window.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/model/ChatClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
+          <folding>
+            <element signature="method#sendPrivateMessage#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#sendBroadcastMessage#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#requestLogout#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#sendMessage#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#addMessageObserver#0;class#ChatClient#0" expanded="false" />
+            <element signature="method#removeMessageObserver#0;class#ChatClient#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ladislav/view/ChatApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ladislav/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="90" column="100" selection-start-line="90" selection-start-column="100" selection-end-line="90" selection-end-column="100" />
+        <state relative-caret-position="34">
+          <caret line="123" column="66" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#loadMainWindow#0;class#LoginController#0" expanded="false" />

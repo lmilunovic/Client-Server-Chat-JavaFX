@@ -57,7 +57,7 @@ public class LoginController implements MessageObserver {
 
     private void loadMainWindow() throws IOException {
 
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../resources/main_window.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("../resources/layouts/main_window.fxml"));
         Parent root = mainLoader.load();
         MainController mainController = mainLoader.getController();
 
@@ -94,7 +94,7 @@ public class LoginController implements MessageObserver {
         dialog.setGraphic(image);
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../resources/register_dialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../resources/layouts/register_dialog.fxml"));
         dialog.getDialogPane().setContent(fxmlLoader.load());
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
@@ -127,7 +127,7 @@ public class LoginController implements MessageObserver {
         configDialog.setGraphic(image);
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../resources/configuration_dialog.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../resources/layouts/configuration_dialog.fxml"));
         configDialog.getDialogPane().setContent(fxmlLoader.load());
         configDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         configDialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
